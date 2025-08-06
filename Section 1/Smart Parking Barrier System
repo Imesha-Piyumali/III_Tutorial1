@@ -1,0 +1,28 @@
+Step 01
+
+
+# Initialize variables for Smart Parking Barrier System
+max_capacity = 50
+current_count = 0
+registered_users = ["AB123CD", "XY456EF"]  # Example vehicle IDs
+
+def vehicle_arrival(vehicle_id):
+    global current_count
+    if vehicle_id in registered_users:
+        if current_count < max_capacity:
+            current_count += 1
+            print("Barrier Opened")
+            print("Available Spots:", max_capacity - current_count)
+        else:
+            print("Parking Full! Entry Denied.")
+    else:
+        print("Unregistered Vehicle! Entry Denied.")
+
+def vehicle_exit():
+    global current_count
+    if current_count > 0:
+        current_count -= 1
+        print("Vehicle Exited")
+        print("Available Spots:", max_capacity - current_count)
+    else:
+        print("Parking Lot Already Empty")
